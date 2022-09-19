@@ -1,48 +1,34 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-
-class Solution {
-public:
-    double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
-        vector<int> v;
-        int m=nums1.size();
-        int n=nums2.size();
-        int i=0,j=0;
-        while(i<m && j<n){
-            if(nums1[i]<=nums2[j]){
-                v.push_back(nums1[i++]);
-            }
-            else
-                v.push_back(nums2[j++]);
-        }
-        while(i<m){
-            v.push_back(nums1[i++]);
-            
-        }
-        while(j<n){
-            v.push_back(nums2[j++]);
-        }
-        if((m+n)&1)
-            return double(v[(m+n)/2]);
-        return double(v[(m+n)/2]+v[(m+n)/2-1])/2.0;
-       
+int fun(int a[], int n)
+{
+	int res = INT_MIN, sum 0;
+    int tot=0;
+	for (int i = 0; i < n; i++) {
+        tot+=a[i];
+		sum  += a[i];
+		if (res < sum)res = sum;
+		if (sum < 0)sum = 0;
+	}
+    for(int i=0;i<n;i++){
+        a[i]*=-1;
     }
-};
-
-int main(){
-    int a,b;
-    vector<int> v1,v2;
-    for(int i=0;i<a;i++){
-        int k;
-        cin>>k;
-        v1.push_back(k);
+    int mins=INT_MIN,mis=0;
+    for(int i=0;i<n;i++){
+        mis+=arr[i];
+        if(mis<arr[i])mis=arr[i];
+        mins=max(mis,mins);
     }
-    for(int i=0;i<b;i++){
-        int k;cin>>k;v2.push_back(k);
-    }
-    Solution s;
+   
+	return (tot<0)? res :tot-mins;
+}
 
-    double p=s.findMedianSortedArrays(v1,v2);
-    cout<<p<<endl;
-    return 0;
+int main()
+{
+	int n;cin>>n;
+    int arr[n];
+    for(int i=0;i<n;i++)cin>>arr[i];
+	int ans = fun(a,n);
+	cout << ans<<endl;
+	return 0;
 }
